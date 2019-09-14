@@ -1,6 +1,7 @@
 syntax = "proto3";
 package abckey;
 import "google/protobuf/descriptor.proto";
+
 /**
  * Options for specifying message direction and type of wire (normal/debug)
  */
