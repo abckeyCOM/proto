@@ -1,5 +1,4 @@
 syntax = "proto3";
-package abckey;
 import "google/protobuf/descriptor.proto";
 
 /**
@@ -18,7 +17,7 @@ extend google.protobuf.EnumValueOptions {
 /**
  * Mapping between ABCKEY wire identifier (uint) and a protobuf message
  */
-enum fun {
+enum types {
   // Bootloader
   fwErase = 6 [(wire_in) = true, (wire_boot) = true];
   fwUpload = 7 [(wire_in) = true, (wire_boot) = true];

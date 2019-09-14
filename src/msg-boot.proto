@@ -1,5 +1,4 @@
 syntax = "proto3";
-package abckey.boot;
 
 /**
  * Request: Ask device to erase its firmware (so it can be replaced via fwUpload)
