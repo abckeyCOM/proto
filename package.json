@@ -6,7 +6,7 @@
   "license": "MIT",
   "main": "dist/index.js",
   "scripts": {
-    "build": "pbjs -t static-module -w commonjs --no-beautify --no-encode --no-decode --no-verify --no-convert -o dist/index.js src/*.proto && pbts -o dist/index.d.ts dist/index.js",
+    "build": "pbjs -t static-module -w commonjs --no-beautify --no-verify --no-convert -o dist/index.js src/*.proto && pbts -o dist/index.d.ts dist/index.js",
     "prepare": "npm run build"
   },
   "repository": {
