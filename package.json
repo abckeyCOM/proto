@@ -1,17 +1,17 @@
 {
-  "name": "@abckey/abckey-proto",
+  "name": "@abckey/proto",
   "version": "0.1.0",
   "description": "ABCKEY Protocol Buffers",
   "author": "abckey <hi@abckey.com>",
   "license": "MIT",
   "main": "dist/index.js",
   "scripts": {
-    "build": "pbjs -t static-module -l eslint-disable --es6 --no-beautify --no-comments -o dist/index.js src/*.proto && pbts -o dist/index.d.ts dist/index.js",
+    "build": "pbjs -t static-module -w commonjs --no-beautify --no-encode --no-decode --no-verify --no-convert -o dist/index.js src/*.proto && pbts -o dist/index.d.ts dist/index.js",
     "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/abcKeyCOM/abckey-proto.git"
+    "url": "https://github.com/abcKeyCOM/proto.git"
   },
   "devDependencies": {
     "protobufjs": "^6.8.8"

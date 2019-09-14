@@ -10,4 +10,6 @@
   "files.autoSave": "afterDelay",
   "files.eol": "\n",
   "files.trimTrailingWhitespace": true,
+  "clang-format.style": "{ BasedOnStyle: Google, ColumnLimit: 0}",
+  "clang-format.executable": "D:/@LLVM/bin/clang-format.exe",
 }

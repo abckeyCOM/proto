@@ -1,5 +1,5 @@
-## abckey-proto
-[![NPM version](https://img.shields.io/npm/v/@abckey/abckey-proto.svg)](https://www.npmjs.com/package/@abckey/abckey-proto)
+## proto
+[![NPM version](https://img.shields.io/npm/v/@abckey/proto.svg)](https://www.npmjs.com/package/@abckey/proto)
 
 ABCKEY Protocol Buffers
 
@@ -37,4 +37,4 @@ Following packets has the following structure:
 
 ## License
 
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FabcKeyCOM%2Fabckey-proto.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FabcKeyCOM%2Fabckey-proto?ref=badge_large)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FabcKeyCOM%2Fproto.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FabcKeyCOM%2Fproto?ref=badge_large)
