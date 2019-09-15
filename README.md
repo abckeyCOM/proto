@@ -1,7 +1,7 @@
 ## proto
 [![NPM version](https://img.shields.io/npm/v/@abckey/proto.svg)](https://www.npmjs.com/package/@abckey/proto)
 
-ABCKEY Protocol Buffers
+ABCKEY Protocol Buffers.
 
 ## Install
 

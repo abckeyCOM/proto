@@ -1,5 +1,5 @@
 {
-  "terminal.integrated.shell.windows": "D:\\Program Files\\Git\\bin\\bash.exe",
+  "terminal.integrated.shell.windows": "D:\\@Git\\bin\\bash.exe",
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
   "editor.formatOnType": true,
@@ -11,5 +11,5 @@
   "files.eol": "\n",
   "files.trimTrailingWhitespace": true,
   "clang-format.style": "{ BasedOnStyle: Google, ColumnLimit: 0}",
-  "clang-format.executable": "D:/@LLVM/bin/clang-format.exe",
+  "clang-format.executable": "D:\\@LLVM\\bin\\clang-format.exe",
 }
