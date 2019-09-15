@@ -6,12 +6,12 @@
   "license": "MIT",
   "main": "dist/index.js",
   "scripts": {
-    "build": "pbjs -t static-module -w commonjs --no-beautify --no-verify --no-convert -o dist/index.js src/*.proto && pbts -o dist/index.d.ts dist/index.js",
+    "build": "pbjs -t static-module -w commonjs --no-beautify --no-verify -o dist/index.js src/*.proto && pbts -o dist/index.d.ts dist/index.js",
     "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/abcKeyCOM/proto.git"
+    "url": "https://github.com/abcKeyCOM/abckey-proto.git"
   },
   "devDependencies": {
     "protobufjs": "^6.8.8"

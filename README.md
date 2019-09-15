@@ -1,4 +1,4 @@
-## proto
+## abckey-proto
 [![NPM version](https://img.shields.io/npm/v/@abckey/proto.svg)](https://www.npmjs.com/package/@abckey/proto)
 
 ABCKEY Protocol Buffers.
@@ -26,7 +26,7 @@ First packet has the following structure:
 | offset | length | type        | contents                                                                              |
 |--------|--------|-------------|---------------------------------------------------------------------------------------|
 |      0 |      3 | char[3]     | '$##' magic constant                                                                  |
-|      3 |      2 | BE uint16_t | numerical [function type](src/msg.proto)                                          |
+|      3 |      2 | BE uint16_t | numerical [types](src/msg.proto)                                          |
 |      5 |      4 | BE uint32_t | message size                                                                          |
 |      9 |     55 | uint8_t[55] | first 55 bytes of message encoded in Protocol Buffers (padded with zeroes if shorter) |
 
