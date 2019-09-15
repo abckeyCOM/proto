@@ -6,14 +6,16 @@ ABCKEY Protocol Buffers
 ## Install
 
 ```
-
+npm i @abckey/proto
 ```
 
 ## Usage
 
-```js
-
 ```
+npm run build
+```
+
+> [protobuf.js](https://github.com/protobufjs/protobuf.js#usage)
 
 ## Protocol
 
@@ -37,4 +39,4 @@ Following packets has the following structure:
 
 ## License
 
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FabcKeyCOM%2Fproto.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FabcKeyCOM%2Fproto?ref=badge_large)
+[MIT](LICENSE)
