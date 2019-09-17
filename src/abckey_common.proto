@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+/**
+ * Response: Success of the previous request
+ * #end
+ */
+message Success {
+  string message = 1;  // human readable description of action or request-specific payload
+}
