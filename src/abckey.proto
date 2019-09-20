@@ -20,10 +20,11 @@ extend google.protobuf.EnumValueOptions {
 enum types {
   // Management
   Initialize = 0 [(wire_in) = true, (wire_tiny) = true];
-  Ping = 1 [(wire_in) = true];
-  Success = 2 [(wire_out) = true];
-  Failure = 3 [(wire_out) = true];
-  WipeDevice = 5 [(wire_in) = true];
+  // Ping = 1 [(wire_in) = true];
+  // Success = 2 [(wire_out) = true];
+  // Failure = 3 [(wire_out) = true];
+  // WipeDevice = 5 [(wire_in) = true];
+  Features = 17 [(wire_out) = true];
 
   // Bootloader
   BootErase = 6 [(wire_in) = true, (wire_boot) = true];
