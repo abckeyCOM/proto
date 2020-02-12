@@ -1,12 +1,13 @@
 {
   "name": "@abckey/proto",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "ABCKEY Protocol Buffers.",
   "author": "abckey <hi@abckey.com>",
   "license": "MIT",
   "main": "dist/index.js",
   "scripts": {
-    "build": "pbjs -t static-module -w commonjs --no-beautify --no-verify -o dist/index.js src/*.proto && pbts -o dist/index.d.ts dist/index.js",
+    "build:53c1": "pbjs -t json src/53c1/*.proto > dist/53c1.json",
+	"build:abc1": "pbjs -t json src/abc1/*.proto > dist/abc1.json",
     "prepare": "npm run build"
   },
   "repository": {
