@@ -6,8 +6,8 @@
   "license": "MIT",
   "main": "dist/index.js",
   "scripts": {
-    "build:53c1": "pbjs -t json src/53c1/*.proto > dist/53c1.json",
-	"build:abc1": "pbjs -t json src/abc1/*.proto > dist/abc1.json",
+    "build:53c1": "pbjs -t json --keep-case src/53c1/*.proto > dist/53c1.json",
+    "build:abc1": "pbjs -t json --keep-case src/abc1/*.proto > dist/abc1.json",
     "prepare": "npm run build"
   },
   "repository": {
