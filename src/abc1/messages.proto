@@ -253,7 +253,7 @@ enum MessageType {
 
 
     // ABCKEY
-    UserSetPublic = 27481 [(wire_in) = true];
+    UserSetPublicKey = 27481 [(wire_in) = true];
     CodeRequest = 27482 [(wire_out) = true];
     CodeAck = 27483 [(wire_in) = true];
 
