@@ -1,0 +1,262 @@
+syntax = "proto2";
+package hw.trezor.messages;
+
+/**
+ * Messages for Trezor communication
+ */
+
+// Sugar for easier handling in Java
+option java_package = "com.satoshilabs.trezor.lib.protobuf";
+option java_outer_classname = "TrezorMessage";
+
+import "google/protobuf/descriptor.proto";
+
+/**
+ * Options for specifying message direction and type of wire (normal/debug)
+ */
+extend google.protobuf.EnumValueOptions {
+    optional bool wire_in = 50002;              // message can be transmitted via wire from PC to Trezor
+    optional bool wire_out = 50003;             // message can be transmitted via wire from Trezor to PC
+    optional bool wire_debug_in = 50004;        // message can be transmitted via debug wire from PC to Trezor
+    optional bool wire_debug_out = 50005;       // message can be transmitted via debug wire from Trezor to PC
+    optional bool wire_tiny = 50006;            // message is handled by Trezor when the USB stack is in tiny mode
+    optional bool wire_bootloader = 50007;      // message is only handled by Trezor Bootloader
+    optional bool wire_no_fsm = 50008;          // message is not handled by Trezor unless the USB stack is in tiny mode
+}
+
+/**
+ * Mapping between Trezor wire identifier (uint) and a protobuf message
+ */
+enum MessageType {
+
+    // Management
+    Initialize = 0 [(wire_in) = true, (wire_tiny) = true];
+    Ping = 1 [(wire_in) = true];
+    Success = 2 [(wire_out) = true];
+    Failure = 3 [(wire_out) = true];
+    ChangePin = 4 [(wire_in) = true];
+    WipeDevice = 5 [(wire_in) = true];
+    GetEntropy = 9 [(wire_in) = true];
+    Entropy = 10 [(wire_out) = true];
+    LoadDevice = 13 [(wire_in) = true];
+    ResetDevice = 14 [(wire_in) = true];
+    Features = 17 [(wire_out) = true];
+    PinMatrixRequest = 18 [(wire_out) = true];
+    PinMatrixAck = 19 [(wire_in) = true, (wire_tiny) = true, (wire_no_fsm) = true];
+    Cancel = 20 [(wire_in) = true, (wire_tiny) = true];
+    ClearSession = 24 [(wire_in) = true];
+    ApplySettings = 25 [(wire_in) = true];
+    ButtonRequest = 26 [(wire_out) = true];
+    ButtonAck = 27 [(wire_in) = true, (wire_tiny) = true, (wire_no_fsm) = true];
+    ApplyFlags = 28 [(wire_in) = true];
+    BackupDevice = 34 [(wire_in) = true];
+    EntropyRequest = 35 [(wire_out) = true];
+    EntropyAck = 36 [(wire_in) = true];
+    PassphraseRequest = 41 [(wire_out) = true];
+    PassphraseAck = 42 [(wire_in) = true, (wire_tiny) = true, (wire_no_fsm) = true];
+    PassphraseStateRequest = 77 [(wire_out) = true];
+    PassphraseStateAck = 78 [(wire_in) = true, (wire_tiny) = true, (wire_no_fsm) = true];
+    RecoveryDevice = 45 [(wire_in) = true];
+    WordRequest = 46 [(wire_out) = true];
+    WordAck = 47 [(wire_in) = true];
+    GetFeatures = 55 [(wire_in) = true];
+    SetU2FCounter = 63 [(wire_in) = true];
+    SdProtect = 79 [(wire_in) = true];
+    GetNextU2FCounter = 80 [(wire_in) = true];
+    NextU2FCounter = 81 [(wire_out) = true];
+    ChangeWipeCode = 82 [(wire_in) = true];
+
+    // Bootloader
+    FirmwareErase = 6 [(wire_in) = true, (wire_bootloader) = true];
+    FirmwareUpload = 7 [(wire_in) = true, (wire_bootloader) = true];
+    FirmwareRequest = 8 [(wire_out) = true, (wire_bootloader) = true];
+    SelfTest = 32 [(wire_in) = true, (wire_bootloader) = true];
+
+    // Bitcoin
+    GetPublicKey = 11 [(wire_in) = true];
+    PublicKey = 12 [(wire_out) = true];
+    SignTx = 15 [(wire_in) = true];
+    TxRequest = 21 [(wire_out) = true];
+    TxAck = 22 [(wire_in) = true];
+    GetAddress = 29 [(wire_in) = true];
+    Address = 30 [(wire_out) = true];
+    SignMessage = 38 [(wire_in) = true];
+    VerifyMessage = 39 [(wire_in) = true];
+    MessageSignature = 40 [(wire_out) = true];
+
+    // Crypto
+    CipherKeyValue = 23 [(wire_in) = true];
+    CipheredKeyValue = 48 [(wire_out) = true];
+    SignIdentity = 53 [(wire_in) = true];
+    SignedIdentity = 54 [(wire_out) = true];
+    GetECDHSessionKey = 61 [(wire_in) = true];
+    ECDHSessionKey = 62 [(wire_out) = true];
+    CosiCommit = 71 [(wire_in) = true];
+    CosiCommitment = 72 [(wire_out) = true];
+    CosiSign = 73 [(wire_in) = true];
+    CosiSignature = 74 [(wire_out) = true];
+
+    // Debug
+    DebugLinkDecision = 100 [(wire_debug_in) = true, (wire_tiny) = true, (wire_no_fsm) = true];
+    DebugLinkGetState = 101 [(wire_debug_in) = true, (wire_tiny) = true];
+    DebugLinkState = 102 [(wire_debug_out) = true];
+    DebugLinkStop = 103 [(wire_debug_in) = true];
+    DebugLinkLog = 104 [(wire_debug_out) = true];
+    DebugLinkMemoryRead = 110 [(wire_debug_in) = true];
+    DebugLinkMemory = 111 [(wire_debug_out) = true];
+    DebugLinkMemoryWrite = 112 [(wire_debug_in) = true];
+    DebugLinkFlashErase = 113 [(wire_debug_in) = true];
+    DebugLinkLayout = 9001 [(wire_debug_out) = true];
+    DebugLinkReseedRandom = 9002 [(wire_debug_in) = true];
+    DebugLinkRecordScreen = 9003 [(wire_debug_in) = true];
+
+    // Ethereum
+    EthereumGetPublicKey = 450 [(wire_in) = true];
+    EthereumPublicKey = 451 [(wire_out) = true];
+    EthereumGetAddress = 56 [(wire_in) = true];
+    EthereumAddress = 57 [(wire_out) = true];
+    EthereumSignTx = 58 [(wire_in) = true];
+    EthereumTxRequest = 59 [(wire_out) = true];
+    EthereumTxAck = 60 [(wire_in) = true];
+    EthereumSignMessage = 64 [(wire_in) = true];
+    EthereumVerifyMessage = 65 [(wire_in) = true];
+    EthereumMessageSignature = 66 [(wire_out) = true];
+
+    // NEM
+    NEMGetAddress = 67 [(wire_in) = true];
+    NEMAddress = 68 [(wire_out) = true];
+    NEMSignTx = 69 [(wire_in) = true];
+    NEMSignedTx = 70 [(wire_out) = true];
+    NEMDecryptMessage = 75 [(wire_in) = true];
+    NEMDecryptedMessage = 76 [(wire_out) = true];
+
+    // Lisk
+    LiskGetAddress = 114 [(wire_in) = true];
+    LiskAddress = 115 [(wire_out) = true];
+    LiskSignTx = 116 [(wire_in) = true];
+    LiskSignedTx = 117 [(wire_out) = true];
+    LiskSignMessage = 118 [(wire_in) = true];
+    LiskMessageSignature = 119 [(wire_out) = true];
+    LiskVerifyMessage = 120 [(wire_in) = true];
+    LiskGetPublicKey = 121 [(wire_in) = true];
+    LiskPublicKey = 122 [(wire_out) = true];
+
+    // Tezos
+    TezosGetAddress = 150 [(wire_in) = true];
+    TezosAddress = 151 [(wire_out) = true];
+    TezosSignTx = 152 [(wire_in) = true];
+    TezosSignedTx = 153 [(wire_out) = true];
+    TezosGetPublicKey = 154 [(wire_in) = true];
+    TezosPublicKey = 155 [(wire_out) = true];
+
+    // Stellar
+    StellarSignTx = 202 [(wire_in) = true];
+    StellarTxOpRequest = 203 [(wire_out) = true];
+    StellarGetAddress = 207 [(wire_in) = true];
+    StellarAddress = 208 [(wire_out) = true];
+    StellarCreateAccountOp = 210 [(wire_in) = true];
+    StellarPaymentOp = 211 [(wire_in) = true];
+    StellarPathPaymentOp = 212 [(wire_in) = true];
+    StellarManageOfferOp = 213 [(wire_in) = true];
+    StellarCreatePassiveOfferOp = 214 [(wire_in) = true];
+    StellarSetOptionsOp = 215 [(wire_in) = true];
+    StellarChangeTrustOp = 216 [(wire_in) = true];
+    StellarAllowTrustOp = 217 [(wire_in) = true];
+    StellarAccountMergeOp = 218 [(wire_in) = true];
+    // omitted: StellarInflationOp is not a supported operation, would be 219
+    StellarManageDataOp = 220 [(wire_in) = true];
+    StellarBumpSequenceOp = 221 [(wire_in) = true];
+    StellarSignedTx = 230 [(wire_out) = true];
+
+    // Cardano
+    // dropped Sign/VerifyMessage ids 300-302
+    CardanoSignTx = 303 [(wire_in) = true];
+    CardanoTxRequest = 304 [(wire_out) = true];
+    CardanoGetPublicKey = 305 [(wire_in) = true];
+    CardanoPublicKey = 306 [(wire_out) = true];
+    CardanoGetAddress = 307 [(wire_in) = true];
+    CardanoAddress = 308 [(wire_out) = true];
+    CardanoTxAck = 309 [(wire_in) = true];
+    CardanoSignedTx = 310 [(wire_out) = true];
+
+    // Ripple
+    RippleGetAddress = 400 [(wire_in) = true];
+    RippleAddress = 401 [(wire_out) = true];
+    RippleSignTx = 402 [(wire_in) = true];
+    RippleSignedTx = 403 [(wire_in) = true];
+
+    // Monero
+    MoneroTransactionInitRequest = 501 [(wire_out) = true];
+    MoneroTransactionInitAck = 502 [(wire_out) = true];
+    MoneroTransactionSetInputRequest = 503 [(wire_out) = true];
+    MoneroTransactionSetInputAck = 504 [(wire_out) = true];
+    MoneroTransactionInputsPermutationRequest = 505 [(wire_out) = true];
+    MoneroTransactionInputsPermutationAck = 506 [(wire_out) = true];
+    MoneroTransactionInputViniRequest = 507 [(wire_out) = true];
+    MoneroTransactionInputViniAck = 508 [(wire_out) = true];
+    MoneroTransactionAllInputsSetRequest = 509 [(wire_out) = true];
+    MoneroTransactionAllInputsSetAck = 510 [(wire_out) = true];
+    MoneroTransactionSetOutputRequest = 511 [(wire_out) = true];
+    MoneroTransactionSetOutputAck = 512 [(wire_out) = true];
+    MoneroTransactionAllOutSetRequest = 513 [(wire_out) = true];
+    MoneroTransactionAllOutSetAck = 514 [(wire_out) = true];
+    MoneroTransactionSignInputRequest = 515 [(wire_out) = true];
+    MoneroTransactionSignInputAck = 516 [(wire_out) = true];
+    MoneroTransactionFinalRequest = 517 [(wire_out) = true];
+    MoneroTransactionFinalAck = 518 [(wire_out) = true];
+    MoneroKeyImageExportInitRequest = 530 [(wire_out) = true];
+    MoneroKeyImageExportInitAck = 531 [(wire_out) = true];
+    MoneroKeyImageSyncStepRequest = 532 [(wire_out) = true];
+    MoneroKeyImageSyncStepAck = 533 [(wire_out) = true];
+    MoneroKeyImageSyncFinalRequest = 534 [(wire_out) = true];
+    MoneroKeyImageSyncFinalAck = 535 [(wire_out) = true];
+    MoneroGetAddress = 540 [(wire_in) = true];
+    MoneroAddress = 541 [(wire_out) = true];
+    MoneroGetWatchKey = 542 [(wire_in) = true];
+    MoneroWatchKey = 543 [(wire_out) = true];
+    DebugMoneroDiagRequest = 546 [(wire_in) = true];
+    DebugMoneroDiagAck = 547 [(wire_out) = true];
+    MoneroGetTxKeyRequest = 550 [(wire_in) = true];
+    MoneroGetTxKeyAck = 551 [(wire_out) = true];
+    MoneroLiveRefreshStartRequest = 552 [(wire_in) = true];
+    MoneroLiveRefreshStartAck = 553 [(wire_out) = true];
+    MoneroLiveRefreshStepRequest = 554 [(wire_in) = true];
+    MoneroLiveRefreshStepAck = 555 [(wire_out) = true];
+    MoneroLiveRefreshFinalRequest = 556 [(wire_in) = true];
+    MoneroLiveRefreshFinalAck = 557 [(wire_out) = true];
+
+    // EOS
+    EosGetPublicKey = 600 [(wire_in) = true];
+    EosPublicKey = 601 [(wire_out) = true];
+    EosSignTx = 602 [(wire_in) = true];
+    EosTxActionRequest = 603 [(wire_out) = true];
+    EosTxActionAck = 604 [(wire_in) = true];
+    EosSignedTx = 605 [(wire_out) = true];
+
+    // Binance
+    BinanceGetAddress = 700 [(wire_in) = true];
+    BinanceAddress = 701 [(wire_out) = true];
+    BinanceGetPublicKey = 702 [(wire_in) = true];
+    BinancePublicKey = 703 [(wire_out) = true];
+    BinanceSignTx = 704 [(wire_in) = true];
+    BinanceTxRequest = 705 [(wire_out) = true];
+    BinanceTransferMsg = 706 [(wire_in) = true];
+    BinanceOrderMsg = 707 [(wire_in) = true];
+    BinanceCancelMsg = 708 [(wire_in) = true];
+    BinanceSignedTx = 709 [(wire_out) = true];
+
+    // WebAuthn
+    WebAuthnListResidentCredentials = 800 [(wire_in) = true];
+    WebAuthnCredentials = 801 [(wire_out) = true];
+    WebAuthnAddResidentCredential = 802 [(wire_in) = true];
+    WebAuthnRemoveResidentCredential = 803 [(wire_in) = true];
+
+
+    // ABCKEY
+    UserSetPublic = 27481 [(wire_in) = true];
+    CodeRequest = 27482 [(wire_out) = true];
+    CodeAck = 27483 [(wire_in) = true];
+
+    UserGetMnemonic = 27484 [(wire_in) = true];
+    Mnemonic = 27485 [(wire_out) = true];
+}

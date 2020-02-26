@@ -1,0 +1,51 @@
+syntax = "proto2";
+package hw.trezor.messages.abckey;
+
+// Sugar for easier handling in Java
+option java_package = "com.satoshilabs.trezor.lib.protobuf";
+option java_outer_classname = "TrezorMessageAbckey";
+
+/**
+ * Request: Set User Public Key
+ * @start
+ * @next CodeRequest
+ * @next Failure
+ */
+message UserSetPublickey {
+  required bytes rsa_mod = 1;
+  required bytes rsa_exp = 2;
+  required bytes msg_sign = 3;
+}
+
+/**
+ * Response: Device awaits encryption code
+ * @auxstart
+ * @next CodeAck
+ */
+message CodeRequest {
+    required string message = 1; // Encrypted code
+}
+
+/**
+ * Request: Computer responds with encoded code
+ * @next Success
+ * @next Failure
+ */
+message CodeAck {
+    required string code = 1;
+}
+
+/**
+ * Request: Get Mnemonic
+ * @next Mnemonic
+ * @next Failure
+ */
+message  UserGetMnemonic{
+}
+
+/**
+ * @end
+ */
+message Mnemonic {
+    required bytes mnemonic = 1;
+}
