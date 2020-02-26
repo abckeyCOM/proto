@@ -36,16 +36,17 @@ message CodeAck {
 }
 
 /**
- * Request: Get Mnemonic
+ * Request: Get Mnemonics
  * @next Mnemonic
  * @next Failure
  */
-message  UserGetMnemonic{
+message  UserGetMnemonics{
 }
 
 /**
+ * Request: RSA encryption algorithm
  * @end
  */
-message Mnemonic {
-    required bytes mnemonic = 1;
+message Mnemonics {
+    required bytes mnemonics = 1;
 }

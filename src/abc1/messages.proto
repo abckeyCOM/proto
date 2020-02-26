@@ -257,6 +257,6 @@ enum MessageType {
     CodeRequest = 27482 [(wire_out) = true];
     CodeAck = 27483 [(wire_in) = true];
 
-    UserGetMnemonic = 27484 [(wire_in) = true];
+    UserGetMnemonics = 27484 [(wire_in) = true];
     Mnemonic = 27485 [(wire_out) = true];
 }
