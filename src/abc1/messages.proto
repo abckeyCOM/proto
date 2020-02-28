@@ -27,7 +27,7 @@ extend google.protobuf.EnumValueOptions {
 /**
  * Mapping between Trezor wire identifier (uint) and a protobuf message
  */
-enum MessageType {
+enum Types {
 
     // Management
     Initialize = 0 [(wire_in) = true, (wire_tiny) = true];

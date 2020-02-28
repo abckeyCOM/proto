@@ -12,9 +12,10 @@ option java_outer_classname = "TrezorMessageAbckey";
  * @next Failure
  */
 message UserSetPublicKey {
-  required bytes rsa_mod = 1;
-  required bytes rsa_exp = 2;
-  required bytes msg_sign = 3;
+  required string rsa_n = 1;
+  required string rsa_e = 2;
+  required string sig_r = 3;
+  required string sig_s = 4;
 }
 
 /**
