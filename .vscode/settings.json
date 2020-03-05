@@ -12,4 +12,7 @@
   "files.trimTrailingWhitespace": true,
   "clang-format.style": "{ BasedOnStyle: Google, ColumnLimit: 0}",
   "clang-format.executable": "D:\\@LLVM\\bin\\clang-format.exe",
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#8E24AA"
+  }
 }
