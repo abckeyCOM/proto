@@ -1,8 +1,8 @@
 syntax = "proto2";
-package hw.trezor.messages.management;
+package hw.abckey.messages.management;
 
 // Sugar for easier handling in Java
-option java_package = "com.satoshilabs.trezor.lib.protobuf";
+option java_package = "com.satoshilabs.abckey.lib.protobuf";
 option java_outer_classname = "TrezorMessageManagement";
 
 /**
@@ -37,7 +37,7 @@ message GetFeatures {
  * @end
  */
 message Features {
-    optional string vendor = 1;                 // name of the manufacturer, e.g. "trezor.io"
+    optional string vendor = 1;                 // name of the manufacturer, e.g. "abckey.io"
     optional uint32 major_version = 2;          // major version of the firmware/bootloader, e.g. 1
     optional uint32 minor_version = 3;          // minor version of the firmware/bootloader, e.g. 0
     optional uint32 patch_version = 4;          // patch version of the firmware/bootloader, e.g. 0

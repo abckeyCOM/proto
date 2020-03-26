@@ -1,8 +1,8 @@
 syntax = "proto2";
-package hw.trezor.messages.binance;
+package hw.abckey.messages.binance;
 
 // Sugar for easier handling in Java
-option java_package = "com.satoshilabs.trezor.lib.protobuf";
+option java_package = "com.satoshilabs.abckey.lib.protobuf";
 option java_outer_classname = "TrezorMessageBinance";
 
 /**
@@ -13,7 +13,7 @@ option java_outer_classname = "TrezorMessageBinance";
  */
 message BinanceGetAddress {
     repeated uint32 address_n = 1;  // BIP-32-style path to derive the key from master node
-    optional bool show_display = 2; // optionally prompt for confirmation on trezor display
+    optional bool show_display = 2; // optionally prompt for confirmation on abckey display
 }
 
 /**

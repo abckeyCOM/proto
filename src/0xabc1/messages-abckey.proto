@@ -1,8 +1,8 @@
 syntax = "proto2";
-package hw.trezor.messages.abckey;
+package hw.abckey.messages.abckey;
 
 // Sugar for easier handling in Java
-option java_package = "com.satoshilabs.trezor.lib.protobuf";
+option java_package = "com.satoshilabs.abckey.lib.protobuf";
 option java_outer_classname = "TrezorMessageAbckey";
 
 /**
@@ -24,7 +24,7 @@ message UserSetPublicKey {
  * @next CodeAck
  */
 message CodeRequest {
-    required string message = 1; // Encrypted code
+  required string message = 1;  // Encrypted code
 }
 
 /**
@@ -33,7 +33,7 @@ message CodeRequest {
  * @next Failure
  */
 message CodeAck {
-    required string code = 1;
+  required string code = 1;
 }
 
 /**
@@ -41,7 +41,7 @@ message CodeAck {
  * @next Mnemonic
  * @next Failure
  */
-message  UserGetMnemonics{
+message UserGetMnemonics {
 }
 
 /**
@@ -49,5 +49,14 @@ message  UserGetMnemonics{
  * @end
  */
 message Mnemonics {
-    required bytes mnemonics = 1;
+  required bytes mnemonics = 1;
+}
+
+/**
+ * Request: Test Display
+ * @next Success
+ * @next Failure
+ */
+message TestDisplay {
+  required bytes bytes = 1;
 }
