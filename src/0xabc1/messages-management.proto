@@ -29,6 +29,7 @@ message Initialize {
  * @start
  * @next Features
  */
+ 
 message GetFeatures {
 }
 

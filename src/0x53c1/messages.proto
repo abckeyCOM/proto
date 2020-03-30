@@ -54,8 +54,6 @@ enum MessageType {
     EntropyAck = 36 [(wire_in) = true];
     PassphraseRequest = 41 [(wire_out) = true];
     PassphraseAck = 42 [(wire_in) = true, (wire_tiny) = true, (wire_no_fsm) = true];
-    PassphraseStateRequest = 77 [(wire_out) = true];
-    PassphraseStateAck = 78 [(wire_in) = true, (wire_tiny) = true, (wire_no_fsm) = true];
     RecoveryDevice = 45 [(wire_in) = true];
     WordRequest = 46 [(wire_out) = true];
     WordAck = 47 [(wire_in) = true];
@@ -65,6 +63,11 @@ enum MessageType {
     GetNextU2FCounter = 80 [(wire_in) = true];
     NextU2FCounter = 81 [(wire_out) = true];
     ChangeWipeCode = 82 [(wire_in) = true];
+
+    // Deprecated messages, kept for protobuf compatibility.
+    // Both are marked wire_out so that we don't need to implement incoming handler for legacy
+    Deprecated_PassphraseStateRequest = 77 [deprecated = true];
+    Deprecated_PassphraseStateAck = 78 [deprecated = true];
 
     // Bootloader
     FirmwareErase = 6 [(wire_in) = true, (wire_bootloader) = true];
@@ -109,6 +112,8 @@ enum MessageType {
     DebugLinkLayout = 9001 [(wire_debug_out) = true];
     DebugLinkReseedRandom = 9002 [(wire_debug_in) = true];
     DebugLinkRecordScreen = 9003 [(wire_debug_in) = true];
+    DebugLinkShowText = 9004 [(wire_debug_in) = true];
+    DebugLinkEraseSdCard = 9005 [(wire_debug_in) = true];
 
     // Ethereum
     EthereumGetPublicKey = 450 [(wire_in) = true];
