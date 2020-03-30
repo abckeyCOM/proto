@@ -1,6 +1,6 @@
 {
   "name": "@abckey/proto",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "ABCKEY Protocol Buffers.",
   "author": "abckey <hi@abckey.com>",
   "license": "MIT",
