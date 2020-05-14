@@ -2,8 +2,8 @@ syntax = "proto2";
 package hw.abckey.messages.binance;
 
 // Sugar for easier handling in Java
-option java_package = "com.satoshilabs.abckey.lib.protobuf";
-option java_outer_classname = "TrezorMessageBinance";
+option java_package = "com.abckey.lib.protobuf";
+option java_outer_classname = "MessageBinance";
 
 /**
  * Request: Ask the device for a Binance address.
@@ -45,7 +45,7 @@ message BinancePublicKey {
 /**
  * Request: Starts the Binance transaction protocol flow.
  * A transaction consists of these common fields and a series of Binance<Any>Msg messages.
- * These parts form a JSON structure (a string) in Trezor's memory, which is signed to produce a BinanceSignedTx.
+ * These parts form a JSON structure (a string) in ABCKEY's memory, which is signed to produce a BinanceSignedTx.
  * @start
  * @next BinanceTxRequest
  * @next Failure
@@ -61,7 +61,7 @@ message BinanceSignTx {
 }
 
 /**
- * Response: Trezor requests the next message or signals that it is ready to send a BinanceSignedTx.
+ * Response: ABCKEY requests the next message or signals that it is ready to send a BinanceSignedTx.
  * @next BinanceTransferMsg
  * @next BinanceOrderMsg
  * @next BinanceCancelMsg

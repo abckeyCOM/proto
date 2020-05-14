@@ -2,8 +2,8 @@ syntax = "proto2";
 package hw.abckey.messages.debug;
 
 // Sugar for easier handling in Java
-option java_package = "com.satoshilabs.abckey.lib.protobuf";
-option java_outer_classname = "TrezorMessageDebug";
+option java_package = "com.abckey.lib.protobuf";
+option java_outer_classname = "MessageDebug";
 
 import "messages-common.proto";
 
@@ -63,8 +63,8 @@ message DebugLinkRecordScreen {
  * @next DebugLinkState
  */
 message DebugLinkGetState {
-    optional bool wait_word_list = 1;  // Trezor T only - wait until mnemonic words are shown
-    optional bool wait_word_pos = 2;   // Trezor T only - wait until reset word position is requested
+    optional bool wait_word_list = 1;  // (TODO: Trezor T) only - wait until mnemonic words are shown
+    optional bool wait_word_pos = 2;   // (TODO: Trezor T) only - wait until reset word position is requested
     optional bool wait_layout = 3;     // wait until current layout changes
 }
 

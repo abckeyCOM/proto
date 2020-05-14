@@ -2,8 +2,8 @@ syntax = "proto2";
 package hw.abckey.messages.ethereum;
 
 // Sugar for easier handling in Java
-option java_package = "com.satoshilabs.abckey.lib.protobuf";
-option java_outer_classname = "TrezorMessageEthereum";
+option java_package = "com.abckey.lib.protobuf";
+option java_outer_classname = "MessageEthereum";
 
 import "messages-common.proto";
 
