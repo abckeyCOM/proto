@@ -1,32 +1,33 @@
 {
-  "name": "@abckey/proto",
+  "name": "@abckey/protoco",
   "version": "0.0.5",
-  "description": "ABCKEY Protocol Buffers.",
+  "description": "ABCKEY And TREZOR Protocol",
   "author": "abckey <hi@abckey.com>",
   "license": "MIT",
   "main": "dist/index.js",
   "scripts": {
-    "build:53c1": "pbjs -t json --keep-case src/0x53c1/*.proto > dist/0x53c1.json",
-    "build:abc1": "pbjs -t json --keep-case src/0xabc1/*.proto > dist/0xabc1.json",
+    "build:53c1": "pbjs -t json --keep-case proto/0x53c1/*.proto > dist/0x53c1.json",
+    "build:abc1": "pbjs -t json --keep-case proto/0xabc1/*.proto > dist/0xabc1.json",
     "build": "npm run build:53c1 & npm run build:abc1",
     "test:protobuf": "ava -v -m protobuf*",
+    "test:protocol": "ava -v -m protocol*",
     "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/abcKeyCOM/abckey-proto.git"
+    "url": "https://github.com/abcKeyCOM/abckey-protoco.git"
   },
   "devDependencies": {
-    "@types/node": "^13.11.1",
+    "@types/node": "^14.0.1",
     "ava": "^3.7.0",
-    "protobufjs": "^6.8.8",
+    "commitizen": "^4.1.2",
+    "conventional-changelog-cli": "^2.0.34",
+    "cz-conventional-changelog": "^3.2.0",
+    "protobufjs": "^6.9.0",
     "rimraf": "^3.0.2",
     "ts-node": "^8.8.2",
     "typedoc": "^0.17.4",
-    "typescript": "^3.8.3",
-    "commitizen": "^4.1.2",
-    "conventional-changelog-cli": "^2.0.34",
-    "cz-conventional-changelog": "^3.2.0"
+    "typescript": "^3.8.3"
   },
   "dependencies": {},
   "files": [

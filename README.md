@@ -1,21 +1,17 @@
-## abckey-proto
-[![NPM version](https://img.shields.io/npm/v/@abckey/proto.svg)](https://www.npmjs.com/package/@abckey/proto)
+## abckey-protoco
+[![NPM version](https://img.shields.io/npm/v/@abckey/protoco.svg)](https://www.npmjs.com/package/@abckey/protocol)
 
-ABCKEY Protocol Buffers.
+ABCKEY And TREZOR Protocol
 
-## Install
+## Javascript
 
 ```
 npm i @abckey/proto
 ```
 
 ## Usage
-
-```
-npm run build
-```
-
-> [protobuf.js](https://github.com/protobufjs/protobuf.js#usage)
+- See the sample code in the "test" directory.
+- [protobuf.js](https://github.com/protobufjs/protobuf.js#usage)
 
 ## Protocol
 
