@@ -1,9 +1,9 @@
 syntax = "proto2";
-package hw.abckey.messages.webauthn;
+package hw.trezor.messages.webauthn;
 
 // Sugar for easier handling in Java
-option java_package = "com.abckey.lib.protobuf";
-option java_outer_classname = "MessageWebAuthn";
+option java_package = "com.satoshilabs.trezor.lib.protobuf";
+option java_outer_classname = "TrezorMessageWebAuthn";
 
 /**
  * Request: List resident credentials
@@ -53,5 +53,7 @@ message WebAuthnCredentials {
         optional uint32 creation_time = 8;
         optional bool hmac_secret = 9;
         optional bool use_sign_count = 10;
+        optional sint32 algorithm = 11;
+        optional sint32 curve = 12;
     }
 }

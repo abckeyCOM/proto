@@ -1,9 +1,9 @@
 syntax = "proto2";
-package hw.abckey.messages.lisk;
+package hw.trezor.messages.lisk;
 
 // Sugar for easier handling in Java
-option java_package = "com.abckey.lib.protobuf";
-option java_outer_classname = "MessageLisk";
+option java_package = "com.satoshilabs.trezor.lib.protobuf";
+option java_outer_classname = "TrezorMessageLisk";
 
 /**
  * Request: Ask device for Lisk address corresponding to address_n path
@@ -56,7 +56,7 @@ message LiskSignTx {
      */
     message LiskTransactionCommon {
         optional LiskTransactionType type = 1;
-        optional uint64 amount = 2 [default=0];
+        optional uint64 amount = 2;
         optional uint64 fee = 3;
         optional string recipient_id = 4;
         optional bytes sender_public_key = 5;

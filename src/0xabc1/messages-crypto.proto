@@ -1,9 +1,9 @@
 syntax = "proto2";
-package hw.abckey.messages.crypto;
+package hw.trezor.messages.crypto;
 
 // Sugar for easier handling in Java
-option java_package = "com.abckey.lib.protobuf";
-option java_outer_classname = "MessageCrypto";
+option java_package = "com.satoshilabs.trezor.lib.protobuf";
+option java_outer_classname = "TrezorMessageCrypto";
 
 /**
  * Request: Ask device to encrypt or decrypt value of given key

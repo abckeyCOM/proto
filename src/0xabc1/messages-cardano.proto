@@ -1,9 +1,9 @@
 syntax = "proto2";
-package hw.abckey.messages.cardano;
+package hw.trezor.messages.cardano;
 
 // Sugar for easier handling in Java
-option java_package = "com.abckey.lib.protobuf";
-option java_outer_classname = "MessageCardano";
+option java_package = "com.satoshilabs.trezor.lib.protobuf";
+option java_outer_classname = "TrezorMessageCardano";
 
 import "messages-common.proto";
 
@@ -15,7 +15,7 @@ import "messages-common.proto";
  */
 message CardanoGetAddress {
     repeated uint32 address_n = 1;  // BIP-32-style path to derive the key from master node
-    optional bool show_display = 2; // optionally prompt for confirmation on abckey display
+    optional bool show_display = 2; // optionally prompt for confirmation on trezor display
 }
 
 /**
@@ -43,7 +43,7 @@ message CardanoGetPublicKey {
  */
 message CardanoPublicKey {
     optional string xpub = 1;                               // Xpub key
-    optional hw.abckey.messages.common.HDNodeType node = 2; // BIP-32 public node
+    optional hw.trezor.messages.common.HDNodeType node = 2; // BIP-32 public node
 }
 
 /**
@@ -79,7 +79,7 @@ message CardanoSignTx {
 
 /**
  * Response: Serialised signed cardano transaction if tx_index is not specified.
- *              If tx_index is specified, abckey will wait for transaction
+ *              If tx_index is specified, trezor will wait for transaction
  * @next CardanoTxAck
  */
 message CardanoTxRequest {

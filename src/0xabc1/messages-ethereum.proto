@@ -1,9 +1,9 @@
 syntax = "proto2";
-package hw.abckey.messages.ethereum;
+package hw.trezor.messages.ethereum;
 
 // Sugar for easier handling in Java
-option java_package = "com.abckey.lib.protobuf";
-option java_outer_classname = "MessageEthereum";
+option java_package = "com.satoshilabs.trezor.lib.protobuf";
+option java_outer_classname = "TrezorMessageEthereum";
 
 import "messages-common.proto";
 
@@ -24,7 +24,7 @@ message EthereumGetPublicKey {
  * @end
  */
 message EthereumPublicKey {
-    optional hw.abckey.messages.common.HDNodeType node = 1;        // BIP32 public node
+    optional hw.trezor.messages.common.HDNodeType node = 1;        // BIP32 public node
     optional string xpub = 2;        // serialized form of public node
 }
 
@@ -44,7 +44,7 @@ message EthereumGetAddress {
  * @end
  */
 message EthereumAddress {
-    optional bytes old_address = 1 [deprecated=true];  // abckey <1.8.0, <2.1.0 - raw bytes of Ethereum address
+    optional bytes old_address = 1 [deprecated=true];  // trezor <1.8.0, <2.1.0 - raw bytes of Ethereum address
     optional string address = 2;                       // Ethereum address as hex-encoded string
 }
 
