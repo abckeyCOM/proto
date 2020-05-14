@@ -8,6 +8,7 @@
   "scripts": {
     "build:53c1": "pbjs -t json --keep-case src/0x53c1/*.proto > dist/0x53c1.json",
     "build:abc1": "pbjs -t json --keep-case src/0xabc1/*.proto > dist/0xabc1.json",
+    "build": "npm run build:53c1 & npm run build:abc1",
     "prepare": "npm run build"
   },
   "repository": {
