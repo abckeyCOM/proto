@@ -1,4 +1,3 @@
-
 import Protobuf from './Protobuf'
 
 interface Options {
@@ -44,7 +43,7 @@ export default class Protocol {
     const arrBuf: Array<Buffer> = []
     data = data || ''
     const typeInt = await this.__PROTOBUF__.lookupEnum(this.__OPTIONS__.enumname, this.__OPTIONS__.prefix + type) // For trezor compatibility.
-    if (!typeInt) return arrBuf
+    if (typeof typeInt !== 'number') return arrBuf
     let dataBuf = await this.__PROTOBUF__.encode(type, data)
     dataBuf = Buffer.from(dataBuf)
     const flagBuf = Buffer.from(this.__MSG_FLAG_STRING__)
