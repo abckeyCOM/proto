@@ -1,16 +1,14 @@
-## abckey-protoco
-[![NPM version](https://img.shields.io/npm/v/@abckey/protoco.svg)](https://www.npmjs.com/package/@abckey/protocol)
+[![NPM version](https://img.shields.io/npm/v/@abckey/protocol.svg)](https://www.npmjs.com/package/@abckey/protocol)
 
 ABCKEY And TREZOR Protocol
 
 ## Javascript
 
 ```
-npm i @abckey/proto
+npm i @abckey/protocol
 ```
 
 ## Usage
-- See the sample code in the "test" directory.
 - [protobuf.js](https://github.com/protobufjs/protobuf.js#usage)
 
 ## Protocol

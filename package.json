@@ -1,36 +1,51 @@
 {
-  "name": "@abckey/protoco",
-  "version": "0.0.5",
+  "name": "@abckey/protocol",
+  "version": "0.0.1",
   "description": "ABCKEY And TREZOR Protocol",
   "author": "abckey <hi@abckey.com>",
   "license": "MIT",
   "main": "dist/index.js",
+  "keywords": [
+    "abckey",
+    "trezor",
+    "protocol"
+  ],
   "scripts": {
-    "build:53c1": "pbjs -t json --keep-case proto/0x53c1/*.proto > dist/0x53c1.json",
-    "build:abc1": "pbjs -t json --keep-case proto/0xabc1/*.proto > dist/0xabc1.json",
-    "build": "npm run build:53c1 & npm run build:abc1",
+    "git": "npx git-cz@4.5.0",
+    "log": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "npm:check": "npx npm-check -u",
+    "build:53c1": "pbjs -t json --keep-case proto/0x53c1/*.proto > ts/0x53c1.json",
+    "build:abc1": "pbjs -t json --keep-case proto/0xabc1/*.proto > ts/0xabc1.json",
+    "build:ts": "tsc -d",
+    "build": "npx rimraf dist && npm run build:ts && npm run build:53c1 && npm run build:abc1",
+    "build:docs": "npx typedoc src --out docs --mode file",
+    "test": "npm run build && ava -v",
     "test:protobuf": "ava -v -m protobuf*",
-    "test:protocol": "ava -v -m protocol*",
-    "prepare": "npm run build"
+    "test:Messages": "ava -v -m Messages*",
+    "prepare": "npm run test"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/abcKey/abckey-protoco.git"
+    "url": "https://github.com/abcKey/abckey-protocol.git"
   },
   "devDependencies": {
-    "@types/node": "^14.0.1",
+    "@types/node": "^14.0.10",
     "ava": "^3.7.0",
     "commitizen": "^4.1.2",
     "conventional-changelog-cli": "^2.0.34",
     "cz-conventional-changelog": "^3.2.0",
-    "protobufjs": "^6.9.0",
-    "rimraf": "^3.0.2",
-    "ts-node": "^8.8.2",
-    "typedoc": "^0.17.4",
-    "typescript": "^3.8.3"
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.3"
   },
-  "dependencies": {},
+  "dependencies": {
+    "protobufjs": "^6.9.0"
+  },
   "files": [
     "dist"
-  ]
+  ],
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }

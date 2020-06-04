@@ -7,7 +7,7 @@ interface Options {
   flagString?: string
 }
 
-export default class Protocol {
+export default class Messages {
   __MSG_HEAD_STRING__ = "$"
   __MSG_FLAG_STRING__ = "##"
   __MSG_BYTE__ = 64

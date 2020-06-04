@@ -1,10 +1,10 @@
 import test from 'ava'
-import Protocol from '../ts/Protocol'
+import Messages from '../ts/Messages'
 
-test('protocol', async t => {
+test('Messages', async t => {
   const type = 'TxRequest'
   const data = { request_type: 2 }
-  const __ABC1__ = new Protocol(require('../dist/0xabc1.json'), {
+  const __ABC1__ = new Messages(require('../dist/0xabc1.json'), {
     enumname: 'Types',
     prefix: '',
     headString: '$',
@@ -15,7 +15,7 @@ test('protocol', async t => {
   console.log('ABC1: ', encode_abc1)
   console.log('ABC1: ', decode_abc1)
 
-  const __53C1__ = new Protocol(require('../dist/0x53c1.json'), {
+  const __53C1__ = new Messages(require('../dist/0x53c1.json'), {
     enumname: 'MessageType',
     prefix: 'MessageType_',
     headString: '?',
