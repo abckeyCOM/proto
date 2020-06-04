@@ -1,6 +1,6 @@
 {
   "name": "@abckey/protocol",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "ABCKEY And TREZOR Protocol",
   "author": "abckey <hi@abckey.com>",
   "license": "MIT",
@@ -12,8 +12,9 @@
   ],
   "scripts": {
     "git": "npx git-cz@4.5.0",
-    "log": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "log": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
     "npm:check": "npx npm-check -u",
+    "tsc:watch": "tsc --watch --noEmit",
     "build:53c1": "pbjs -t json --keep-case proto/0x53c1/*.proto > ts/0x53c1.json",
     "build:abc1": "pbjs -t json --keep-case proto/0xabc1/*.proto > ts/0xabc1.json",
     "build:ts": "tsc -d",
